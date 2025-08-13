@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../lib/utils.js";
+import cloudnary from "../lib/cloudnary.js";
 
 export const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -47,10 +48,75 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = (req, res) => {
-  res.send("login route");
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ message: "All Fileds are required" });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credential" });
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ message: "Invalid credential" });
+    }
+    generateToken(user._id, res);
+    return res.status(200).json({
+      _id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+      profilePic: user.profilePic,
+    });
+  } catch (error) {
+    console.log("Error in login controller" + error.message);
+    return res.status(500).json({ message: "Internal Server Exception" });
+  }
 };
 
 export const logout = (req, res) => {
-  res.send("logout route");
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    return res.status(200).json({ message: "logout Successfully" });
+  } catch (error) {
+    console.log("Error in logout controller" + error.message);
+    return res.status(500).json({ message: "Internal Server Exception" });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    const { profilePic } = res.body;
+    const userId = res.user._id;
+    if (!profilePic) {
+      return res.status(400).json({ message: "profilePic is required Field" });
+    }
+
+    const uploadResponse = await cloudnary.uploader.upload(profilePic);
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { profilePic: uploadResponse.secure_url },
+      { new: true }
+    );
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    console.log("Error in updateProfile controller" + error.message);
+    return res.status(500).json({ message: "Internal Server Exception" });
+  }
+};
+
+export const checkAuth = async (req, res) => {
+  try {
+    console.log(res.user);
+    return res.status(200).json(res.user);
+  } catch (error) {
+    console.log("Error in checkAuth controller" + error.message);
+    return res.status(500).json({ message: "Internal Server Exception" });
+  }
 };
