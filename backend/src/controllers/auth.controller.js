@@ -50,7 +50,6 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-
   try {
     if (!email || !password) {
       return res.status(400).json({ message: "All Fileds are required" });
@@ -68,6 +67,13 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credential" });
     }
     generateToken(user._id, res);
+    console.log({
+      _id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+      profilePic: user.profilePic,
+    });
+
     return res.status(200).json({
       _id: user._id,
       fullName: user.fullName,
@@ -92,8 +98,8 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    const { profilePic } = res.body;
-    const userId = res.user._id;
+    const { profilePic } = await req.user;
+    const userId = req.user._id;
     if (!profilePic) {
       return res.status(400).json({ message: "profilePic is required Field" });
     }
@@ -113,7 +119,6 @@ export const updateProfile = async (req, res) => {
 
 export const checkAuth = async (req, res) => {
   try {
-    console.log(res.user);
     return res.status(200).json(res.user);
   } catch (error) {
     console.log("Error in checkAuth controller" + error.message);
