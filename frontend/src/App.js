@@ -10,7 +10,6 @@ import Navbar from "./components/view/Navbar";
 function App() {
   return (
     <BrowserRouter>
-      <div>app</div>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
