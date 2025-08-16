@@ -1,21 +1,22 @@
 import "./App.css";
-import { BrowserRouter, Router, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
-import SettingsPage from "./pages/SettingsPage";
-import ProfilePage from "./pages/ProfilePage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/view/HomePage";
+import SignUpPage from "./pages/view/SignUpPage";
+import LoginPage from "./pages/view/LoginPage";
+import SettingsPage from "./pages/view/SettingsPage";
+import ProfilePage from "./pages/view/ProfilePage";
+import Navbar from "./components/view/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">app</div>
+      <Navbar />
       <Routes>
-        <Router path="/" element={<HomePage />} />
-        <Router path="/signup" element={<SignUpPage />} />
-        <Router path="/login" element={<LoginPage />} />
-        <Router path="/settings" element={<SettingsPage />} />
-        <Router path="/profile" element={<ProfilePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

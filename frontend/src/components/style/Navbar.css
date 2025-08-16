@@ -1,0 +1,57 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  padding: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.navbar h4 {
+  color: #444;
+}
+.navbar i {
+  color: #444;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.user-menu,
+.user-menuitem,
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-menuitem {
+  margin: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .navbar h4 {
+    display: none;
+  }
+  .user-menuitem {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar h4 {
+    display: none;
+  }
+  .navbar i { 
+    margin: 5px;
+  }
+}
