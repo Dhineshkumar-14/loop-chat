@@ -1,0 +1,165 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #e2e2e2, #c9deff);
+}
+
+.container {
+  position: relative;
+  width: 500px;
+  height: 550px;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 0 3 rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin: 20px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile h1 {
+  font-size: 36px;
+}
+
+.profile-img-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+}
+
+.profile-icon {
+  background-color: #ccc;
+  outline: none;
+  border: none;
+  width: 35px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30%;
+}
+
+.profile-icon i {
+  font-size: 20px;
+}
+
+.profile small {
+  font-weight: 500;
+  color: #999;
+}
+
+#img-input{
+    display: none;
+}
+
+.personal-info-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.input-div {
+  width: 100%;
+}
+.input {
+  padding: 8px 10px;
+  width: 100%;
+  border: 2px solid #777;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #777;
+  font-size: 13px;
+  background-color: #eee;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-weight: 500;
+  font-weight: 500;
+  color: #888;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  gap: 5px;
+}
+
+.label-container i {
+  color: #333;
+  font-size: 15px;
+}
+
+label {
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.account-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.account-info-container h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.account-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-info label {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.account-info .active {
+  color: #0ce97e;
+}
+
+@media screen and (max-width: 650px) {
+  .profile-container {
+    height: calc(100vh-40px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-container {
+    height: calc(100vh-40px);
+  }
+  .profile small {
+    display: none;
+  }
+  .profile-icon {
+    bottom: 10px;
+    right: 10%;
+  }
+}

@@ -59,7 +59,7 @@ form {
   color: #888;
 }
 
-.input-box i {
+.login i {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

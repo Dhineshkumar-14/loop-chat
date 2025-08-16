@@ -1,24 +1,46 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/view/HomePage";
-import SignUpPage from "./pages/view/SignUpPage";
-import LoginPage from "./pages/view/LoginPage";
-import SettingsPage from "./pages/view/SettingsPage";
-import ProfilePage from "./pages/view/ProfilePage";
 import Navbar from "./components/view/Navbar";
+import HomePage from "./pages/view/HomePage";
+import LoginPage from "./pages/view/LoginPage";
+import ProfilePage from "./pages/view/ProfilePage";
+import SettingsPage from "./pages/view/SettingsPage";
+import SignUpPage from "./pages/view/SignUpPage";
+import { Toaster } from "react-hot-toast";
+import { Fragment, useEffect } from "react";
+import { checkAuth } from "./lib/auth.lib";
 
 function App() {
+  const authUser = useSelector((state) => state.authUser.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    checkAuth(dispatch);
+  }, []);
   return (
-    <BrowserRouter>
+    <Fragment>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/" element={authUser ? <HomePage /> : <LoginPage />} />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignUpPage /> : <HomePage />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <LoginPage /> : <HomePage />}
+        />
+        <Route
+          path="/settings"
+          element={authUser ? <SettingsPage /> : <LoginPage />}
+        />
+        <Route
+          path="/profile"
+          element={authUser ? <ProfilePage /> : <LoginPage />}
+        />
       </Routes>
-    </BrowserRouter>
+      <Toaster />
+    </Fragment>
   );
 }
 
