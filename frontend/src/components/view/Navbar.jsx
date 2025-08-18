@@ -1,17 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import "../style/Navbar.css";
-import { axiosInstance } from "../../lib/axios";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../store/slicers/AuthSlicer";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../lib/auth.lib.js";
+import "../style/Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const profile = () => {
-    navigate("/profile");
-  };
-
+  const authUser = useSelector((state) => state.authUser.user);
+  
   const logoutHandler = async () => {
     logout(dispatch);
   };
@@ -23,18 +19,20 @@ const Navbar = () => {
         <h1>Loop Chat</h1>
       </div>
       <div className="user-menu">
-        <div className="user-menuitem">
-          <i className="bx  bxs-cog"></i>
-          <h4>Settings</h4>
-        </div>
-        <div className="user-menuitem" onClick={profile}>
-          <i className="bx  bxs-user"></i>
-          <h4>Profile</h4>
-        </div>
-        <div className="user-menuitem" onClick={logoutHandler}>
-          <i className="bx bxs-exit"></i>
-          <h4>Logout</h4>
-        </div>
+        {authUser && (
+          <>
+            <Link to={"/profile"}>
+              <div className="user-menuitem">
+                <i className="bx  bxs-user"></i>
+                <h4>Profile</h4>
+              </div>
+            </Link>
+            <div className="user-menuitem" onClick={logoutHandler}>
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <h4>Logout</h4>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

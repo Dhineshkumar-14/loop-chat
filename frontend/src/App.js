@@ -5,7 +5,6 @@ import Navbar from "./components/view/Navbar";
 import HomePage from "./pages/view/HomePage";
 import LoginPage from "./pages/view/LoginPage";
 import ProfilePage from "./pages/view/ProfilePage";
-import SettingsPage from "./pages/view/SettingsPage";
 import SignUpPage from "./pages/view/SignUpPage";
 import { Toaster } from "react-hot-toast";
 import { Fragment, useEffect } from "react";
@@ -29,10 +28,6 @@ function App() {
         <Route
           path="/login"
           element={!authUser ? <LoginPage /> : <HomePage />}
-        />
-        <Route
-          path="/settings"
-          element={authUser ? <SettingsPage /> : <LoginPage />}
         />
         <Route
           path="/profile"
