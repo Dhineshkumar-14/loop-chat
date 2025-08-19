@@ -7,14 +7,18 @@ const authSlicer = createSlice({
     isLoggingIng: false,
     isSigningUp: false,
     isUpdatingProfile: false,
+    onlineUsersKeys: [],
   },
   reducers: {
     setUser(currentState, action) {
       currentState.user = action.payload;
     },
+    setOnlineUsers(currentState, action) {
+      currentState.onlineUsersKeys = action.payload;
+    },
   },
 });
 
-export const { setUser } = authSlicer.actions;
+export const { setUser, setOnlineUsers } = authSlicer.actions;
 
 export default authSlicer.reducer;

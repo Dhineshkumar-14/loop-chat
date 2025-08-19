@@ -23,8 +23,18 @@
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
 }
-
+.status-dot {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #00ff00; /* green */
+  border: 2px solid white; /* white border around */
+  border-radius: 50%;
+}
 .contactactive {
   background-color: #ddd;
 }
@@ -44,12 +54,21 @@
   font-weight: 500;
 }
 
+.text-div {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+}
+
 @media screen and (max-width: 550px) {
   .sidebar {
     width: 45px;
   }
   .contact-title h5,
-  .contact-title h6 {
+  .contact-title h6,
+  .text-div {
     display: none;
   }
   .users {
@@ -57,5 +76,8 @@
   }
   .contact {
     padding: 0;
+  }
+  .status-dot {
+    left: 28px;
   }
 }
