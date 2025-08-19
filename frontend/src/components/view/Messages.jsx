@@ -20,7 +20,7 @@ const Messages = () => {
       subscribeToMessages(disPatch);
     }
     return () => unSubscribeToMessages(disPatch);
-  }, [selectedUser, disPatch]);
+  }, [selectedUser, messages, disPatch]);
 
   // Auto-scroll when new messages arrive (only if near bottom)
   useEffect(() => {
