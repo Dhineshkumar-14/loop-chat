@@ -3,8 +3,10 @@ import { BASE_URL } from "../config/url.config";
 import { store } from "../store/store";
 import { setOnlineUsers } from "../store/slicers/AuthSlicer";
 
-export const socket = io(BASE_URL, {
+export const socket = io({
   autoConnect: false,
+  transports: ["websocket"],
+  withCredentials: true,
 });
 
 export const connectSocket = (dispatch) => {
