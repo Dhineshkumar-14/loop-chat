@@ -1,13 +1,10 @@
 .sidebar {
   height: 100%;
-  min-height: 100%;
   width: 200px;
   background-color: red;
   background: #fff;
   border-radius: 8px;
-  background: linear-gradient(90deg, #e2e2e2, #c9deff);
   box-shadow: 0 0 3 rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
 }
 
 .users {
@@ -15,12 +12,21 @@
   display: flex;
   gap: 10px;
   flex-direction: column;
+
+  overflow-y: auto;
 }
 
 .contact {
   display: flex;
   gap: 10px;
   align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contactactive {
+  background-color: #ddd;
 }
 
 .contact-img {
@@ -48,5 +54,8 @@
   }
   .users {
     padding: 5px;
+  }
+  .contact {
+    padding: 0;
   }
 }

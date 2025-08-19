@@ -18,7 +18,7 @@ export const getUsersForSidebar = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   try {
-    const myId = res.user._id;
+    const myId = req.user._id;
     const { id: userToChatId } = req.params;
     const messages = await Message.find({
       $or: [
@@ -43,7 +43,7 @@ export const sendMessages = async (req, res) => {
   try {
     const { text, image } = req.body;
     const { id: receiverId } = req.params;
-    const senderId = res.user._id;
+    const senderId = req.user._id;
     let imageUrl;
     if (image) {
       const uploadResponse = await cloudnary.uploader.upload(image);
@@ -59,7 +59,7 @@ export const sendMessages = async (req, res) => {
 
     await newMessage.save();
 
-    return res.status(200).json(filteredUsers);
+    return res.status(200).json(newMessage);
   } catch (error) {
     console.log("Error in sendMessages controller" + error.message);
     return res.status(500).json({ message: "Internal Server Exception" });

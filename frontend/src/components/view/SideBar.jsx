@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
-import "../style/Sidebar.css";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../lib/message.lib";
+import { getUsers, updateSelectedUser } from "../../lib/message.lib";
+import "../style/Sidebar.css";
 
 const SideBar = () => {
   const users = useSelector((state) => state.messageSlicer.users);
+  const selectedUser = useSelector((state) => state.messageSlicer.selectedUser);
   const disPatch = useDispatch();
 
   useEffect(() => {
     getUsers(disPatch);
   }, []);
+
+  const setSelectUser = (user) => {
+    updateSelectedUser(user, disPatch);
+  };
 
   return (
     <div className="sidebar">
@@ -18,9 +23,18 @@ const SideBar = () => {
         {users.length > 0 &&
           users.map((user) => {
             return (
-              <div className="contact">
+              <div
+                key={user._id}
+                className={`contact ${
+                  user._id === selectedUser?._id ? " contactactive" : ""
+                }`}
+                onClick={() => {
+                  setSelectUser(user);
+                }}
+              >
                 <img
                   className="contact-img"
+                  alt="user-img"
                   src={
                     user.profilePic
                       ? user.profilePic
