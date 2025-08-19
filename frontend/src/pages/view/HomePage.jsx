@@ -3,16 +3,29 @@ import "../style/HomePage.css";
 import SideBar from "../../components/view/SideBar";
 import ChatContainer from "../../components/view/ChatContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedUser } from "../../store/slicers/MessageSlicer";
+import {
+  setOnlineUSerVisiblity,
+  setSelectedUser,
+} from "../../store/slicers/MessageSlicer";
 
 const HomePage = () => {
   const selectedUser = useSelector((state) => state.messageSlicer.selectedUser);
-
+  const authUser = useSelector((state) => state.authUser.user);
+  const onlineUsers = useSelector((state) => state.authUser.onlineUsersKeys);
   const dispatch = useDispatch();
 
   const onClose = () => {
     dispatch(setSelectedUser(null));
   };
+
+  const onChangeHandler = (event) => {
+    if (event.target.checked) {
+      dispatch(setOnlineUSerVisiblity(true));
+    } else {
+      dispatch(setOnlineUSerVisiblity(false));
+    }
+  };
+
   return (
     <div className="homepage">
       <div className="homepage-navbar">
@@ -22,9 +35,10 @@ const HomePage = () => {
             <h3>Contacts</h3>
           </div>
           <div className="filter-users">
-            <input type="radio" />
+            <input type="checkbox" onChange={onChangeHandler} />
             <h4>
-              how online only <small>{`(1 online)`}</small>
+              show online only{" "}
+              <small>{`(${onlineUsers.length - 1} online)`}</small>
             </h4>
           </div>
         </div>

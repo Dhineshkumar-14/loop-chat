@@ -6,6 +6,7 @@ const messageSlicer = createSlice({
     users: [],
     messages: [],
     selectedUser: undefined,
+    isShowOnlineUserOnly: false,
   },
   reducers: {
     setUsers(currentState, action) {
@@ -20,9 +21,13 @@ const messageSlicer = createSlice({
     addMessages(currentState, action) {
       currentState.messages.push(action.payload);
     },
+    setOnlineUSerVisiblity(currentState, action) {
+      currentState.isShowOnlineUserOnly = action.payload;
+    },
   },
 });
 
 export default messageSlicer.reducer;
 
-export const { setUsers, setMessages, setSelectedUser,addMessages } = messageSlicer.actions;
+export const { setUsers, setMessages, setSelectedUser, addMessages,setOnlineUSerVisiblity } =
+  messageSlicer.actions;
