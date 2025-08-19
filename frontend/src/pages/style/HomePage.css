@@ -2,7 +2,8 @@
   width: 100%;
   max-width: 900px;
   margin: 20px auto;
-  min-height: 85vh;
+  min-height: 100%;
+  height: 600px;
   padding: 10px;
   border-radius: 8px;
   background: linear-gradient(90deg, #e2e2e2, #c9deff);
@@ -13,6 +14,7 @@
   border-radius: 8px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  display: flex;
 }
 
 .title-container {
@@ -43,13 +45,56 @@
 .homepage-maincontainer {
   margin-top: 10px;
   width: 100%;
-  flex: 1;
+  height: 86%;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background-color: #eee;
   padding: 10px;
   display: flex;
   gap: 10px;
+}
+
+.title-header {
+  width: 300px;
+}
+
+.chat-header {
+  padding: 0 20px 0 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-user-img {
+  height: 50px;
+  width: 50px;
+}
+
+.chat-user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.chat-user-img {
+  height: 35px;
+  width: 35px;
+}
+
+.chat-user-title h5 {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chat-user-title h6 {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.chat-header i {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {
@@ -59,5 +104,17 @@
   .homepage-maincontainer {
     padding: 5px;
     margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .title-header {
+    width: 50px;
+    display: flex;
+    align-items: center;
+  }
+  .title-container h3,
+  .filter-users {
+    display: none;
   }
 }
