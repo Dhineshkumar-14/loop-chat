@@ -59,12 +59,24 @@ const SignUpPage = () => {
         <h1>Sign Up</h1>
 
         <div class="input-box">
-          <input type="text" placeholder="Full Name" required onBlur={onBlur} />
+          <input
+            type="text"
+            placeholder="Full Name"
+            name="fullName"
+            required
+            onBlur={onBlur}
+          />
           <i class="fas fa-user"></i>
         </div>
 
         <div class="input-box">
-          <input type="email" placeholder="Email" required onBlur={onBlur} />
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            required
+            onBlur={onBlur}
+          />
           <i class="fas fa-envelope"></i>
         </div>
 
@@ -74,6 +86,7 @@ const SignUpPage = () => {
             placeholder="Password"
             required
             onBlur={onBlur}
+            name="password"
           />
           <i class="fas fa-lock"></i>
         </div>

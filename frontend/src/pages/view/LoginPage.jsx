@@ -34,7 +34,13 @@ const LoginPage = () => {
         <h1>Login</h1>
 
         <div class="input-box">
-          <input type="email" placeholder="Email" required onBlur={onBlur} />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            onBlur={onBlur}
+            name="email"
+          />
           <i class="fas fa-envelope"></i>
         </div>
 
@@ -44,6 +50,7 @@ const LoginPage = () => {
             placeholder="Password"
             required
             onBlur={onBlur}
+            name="password"
           />
           <i class="fas fa-lock"></i>
         </div>
