@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./../style/SignUpPage.css";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { signup } from "../../lib/auth.lib";
@@ -55,55 +54,38 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="signup">
-      <div className="signup-container">
-        <div className="signup-formbox">
-          <form>
-            <h1>Signup</h1>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="Email"
-                required
-                name="email"
-                onBlur={onBlur}
-              />
-              <i className="bx bxs-envelope"></i>
-            </div>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="Full Name"
-                required
-                name="fullName"
-                onBlur={onBlur}
-              />
-              <i className="bx bxs-user"></i>
-            </div>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="password"
-                required
-                name="password"
-                onBlur={onBlur}
-              />
-              <i className="bx bxs-lock"></i>
-            </div>
-            <button className="btn" onClick={handleSubmit}>
-              {" "}
-              Create Account{" "}
-            </button>
-            <p>
-              {" "}
-              Already have an account?{" "}
-              <strong>
-                <Link to={"/login"}>Login</Link>
-              </strong>
-            </p>
-          </form>
+    <div class="login">
+      <form>
+        <h1>Sign Up</h1>
+
+        <div class="input-box">
+          <input type="text" placeholder="Full Name" required onBlur={onBlur} />
+          <i class="fas fa-user"></i>
         </div>
-      </div>
+
+        <div class="input-box">
+          <input type="email" placeholder="Email" required onBlur={onBlur} />
+          <i class="fas fa-envelope"></i>
+        </div>
+
+        <div class="input-box">
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            onBlur={onBlur}
+          />
+          <i class="fas fa-lock"></i>
+        </div>
+
+        <button type="submit" class="btn" onClick={handleSubmit}>
+          Create Account
+        </button>
+
+        <p class="signup-text">
+          Already have an account? <Link to={"/login"}>Login</Link>
+        </p>
+      </form>
     </div>
   );
 };

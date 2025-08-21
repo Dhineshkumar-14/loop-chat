@@ -29,38 +29,31 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login">
+    <div class="login">
       <form>
         <h1>Login</h1>
-        <div className="input-box">
+
+        <div class="input-box">
+          <input type="email" placeholder="Email" required onBlur={onBlur} />
+          <i class="fas fa-envelope"></i>
+        </div>
+
+        <div class="input-box">
           <input
-            type="text"
-            placeholder="Email"
+            type="password"
+            placeholder="Password"
             required
-            name="email"
             onBlur={onBlur}
           />
-          <i className="bx bxs-envelope"></i>
+          <i class="fas fa-lock"></i>
         </div>
-        <div className="input-box">
-          <input
-            type="text"
-            placeholder="password"
-            required
-            name="password"
-            onBlur={onBlur}
-          />
-          <i className="bx bxs-lock"></i>
-        </div>
-        <button className="btn" onClick={onLogin}>
-          Login{" "}
+
+        <button type="submit" class="btn" onClick={onLogin}>
+          Sign In
         </button>
-        <p>
-          {" "}
-          don't have an account?{" "}
-          <strong>
-            <Link to={"/signup"}>signup</Link>
-          </strong>
+
+        <p class="signup-text">
+          Don’t have an account? <Link to={"/signup"}>signup</Link>
         </p>
       </form>
     </div>
