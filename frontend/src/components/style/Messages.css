@@ -1,18 +1,21 @@
 .message-container {
   padding: 10px;
   display: flex;
-  align-items: center;
   flex-direction: column;
   width: 100%;
+  margin-top: 5px;
   gap: 10px;
-  display: flex;
   height: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .message-scroll-div {
+  flex: 1;                /* Take remaining space */
   width: 100%;
-  overflow-y: auto;
-  margin-bottom: 50px;
+  overflow-y: auto;        /* Enable scroll */
+  padding-right: 5px;      /* Avoid content hiding behind scrollbar */
 }
 .chatstart {
   display: flex;
@@ -69,6 +72,6 @@
 
 @media screen and (max-width: 400px) {
   .empty-chat-container h5 {
-   display: none;
+    display: none;
   }
 }

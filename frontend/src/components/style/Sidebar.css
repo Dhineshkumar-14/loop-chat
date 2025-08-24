@@ -1,18 +1,46 @@
 .sidebar {
   height: 100%;
-  width: 200px;
-  background-color: red;
-  background: #fff;
+  width: 300px;
+  background: #efefef;
   border-radius: 8px;
-  box-shadow: 0 0 3 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3 rgba(247, 203, 203, 0.2);
+  padding: 1rem 0.5rem;
+}
+
+.sidebar-title {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.title-container,
+.filter-users {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-users {
+  margin-left: 2px;
+}
+
+.filter-users h4 {
+  font-size: 12px;
+  margin-left: 5px;
+  font-weight: 600;
 }
 
 .users {
-  padding: 10px;
+  margin-top: 10px;
   display: flex;
   gap: 10px;
   flex-direction: column;
-
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  height: 90%;
   overflow-y: auto;
 }
 
@@ -64,7 +92,12 @@
 
 @media screen and (max-width: 550px) {
   .sidebar {
-    width: 45px;
+    width: 50px;
+    height: 100%;
+  }
+  .filter-users,
+  .title-container h3 {
+    display: none;
   }
   .contact-title h5,
   .contact-title h6,
@@ -72,7 +105,11 @@
     display: none;
   }
   .users {
-    padding: 5px;
+    padding: 0px;
+    background: #efefef;
+    height: 90%;
+    overflow-x: hidden;
+    box-shadow: none;
   }
   .contact {
     padding: 0;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getMessages,
@@ -11,8 +11,9 @@ const Messages = () => {
   const messages = useSelector((state) => state.messageSlicer.messages);
   const selectedUser = useSelector((state) => state.messageSlicer.selectedUser);
   const disPatch = useDispatch();
-  const messageEndRef = useRef();
-
+  const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
+  const [autoScroll, setAutoScroll] = useState(true);
   // Fetch messages & subscribe only when selectedUser changes
   useEffect(() => {
     if (selectedUser) {
@@ -20,15 +21,24 @@ const Messages = () => {
       subscribeToMessages(disPatch);
     }
     return () => unSubscribeToMessages(disPatch);
-  }, [selectedUser, messages, disPatch]);
+  }, [selectedUser, messages]);
 
-  // Auto-scroll when new messages arrive (only if near bottom)
+  // Detect if user is at bottom
+  const handleScroll = () => {
+    const el = messagesContainerRef.current;
+    const isAtBottom = el.scrollHeight - el.scrollTop <= el.clientHeight + 5;
+    setAutoScroll(isAtBottom);
+  };
+
+  // Scroll to bottom only if autoScroll is true
+  const scrollToBottom = () => {
+    if (autoScroll && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   useEffect(() => {
-    if (!messageEndRef.current || !messages.length) return;
-
-    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    scrollToBottom();
   }, [messages]);
-
   const getTime = (message) => {
     const createdAt = new Date(message.createdAt);
     return createdAt.toLocaleTimeString([], {
@@ -40,7 +50,11 @@ const Messages = () => {
 
   return (
     <div className="message-container">
-      <div className="message-scroll-div">
+      <div
+        className="message-scroll-div"
+        ref={messagesContainerRef}
+        onScroll={handleScroll}
+      >
         {messages.map((message) => (
           <div
             key={message._id}
@@ -63,7 +77,7 @@ const Messages = () => {
             </div>
           </div>
         ))}
-        <div ref={messageEndRef} />
+        <div ref={messagesEndRef} />
       </div>
     </div>
   );
