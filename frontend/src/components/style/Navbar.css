@@ -6,6 +6,8 @@
   width: 100vw;
   padding: 10px;
   background-color: #efefef;
+  position: fixed;
+  top: 0;
 }
 a {
   color: inherit;
