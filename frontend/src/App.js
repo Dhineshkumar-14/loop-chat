@@ -9,15 +9,19 @@ import SignUpPage from "./pages/view/SignUpPage";
 import { Toaster } from "react-hot-toast";
 import { Fragment, useEffect } from "react";
 import { checkAuth } from "./lib/auth.lib";
+import Loader from "./pages/view/Loader";
 
 function App() {
   const authUser = useSelector((state) => state.authUser.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     checkAuth(dispatch);
   }, []);
+
   return (
     <Fragment>
+      <Loader/>
       <Navbar />
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <LoginPage />} />

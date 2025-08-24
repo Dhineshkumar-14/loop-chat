@@ -35,18 +35,23 @@ const SideBar = () => {
   };
   return (
     <div className="sidebar">
-     <div className="sidebar-title">
-       <div className="title-container">
-        <i className="fa-solid fa-user-group"></i>
-        <h3>Contacts</h3>
+      <div className="sidebar-title">
+        <div className="title-container">
+          <i className="fa-solid fa-user-group"></i>
+          <h3>Contacts</h3>
+        </div>
+        <div className="filter-users">
+          <input type="checkbox" onChange={onChangeHandler} />
+          <h4>
+            show online only{" "}
+            <small>{`(${
+              onlineUsers.length - 1 > 0
+                ? onlineUsers.length - 1
+                : onlineUsers.length
+            } online)`}</small>
+          </h4>
+        </div>
       </div>
-      <div className="filter-users">
-        <input type="checkbox" onChange={onChangeHandler} />
-        <h4>
-          show online only <small>{`(${onlineUsers.length - 1} online)`}</small>
-        </h4>
-      </div>
-     </div>
       {users.length === 0 && <h5>No Contacts</h5>}
       <div className="users">
         {filteredUsers.length > 0 &&

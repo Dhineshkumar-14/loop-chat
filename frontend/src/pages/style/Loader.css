@@ -1,0 +1,63 @@
+:root {
+  --loader-size: clamp(48px, 12vw, 100px);
+  --ring-width: 6px;
+  --ring-color: #3b82f6; /* blue */
+  --ring-track: #e5e7eb; /* gray */
+  --overlay-bg: rgba(255, 255, 255, 1);
+}
+/* Fullscreen overlay */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--overlay-bg);
+  z-index: 9999; /* always on top */
+  pointer-events: all; /* block interactions */
+}
+
+/* Spinner */
+.spinner {
+  width: var(--loader-size);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, var(--ring-color) 94%, #0000)
+      top/var(--ring-width) var(--ring-width) no-repeat,
+    conic-gradient(var(--ring-color) 10%, #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - var(--ring-width)),
+    #000 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - var(--ring-width)),
+    #000 0
+  );
+  animation: spin 1s linear infinite;
+  position: relative;
+}
+.spinner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(#0000 0 35%, var(--ring-track) 0 100%);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - var(--ring-width)),
+    #000 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - var(--ring-width)),
+    #000 0
+  );
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

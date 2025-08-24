@@ -29,5 +29,10 @@ const messageSlicer = createSlice({
 
 export default messageSlicer.reducer;
 
-export const { setUsers, setMessages, setSelectedUser, addMessages,setOnlineUSerVisiblity } =
-  messageSlicer.actions;
+export const {
+  setUsers,
+  setMessages,
+  setSelectedUser,
+  addMessages,
+  setOnlineUSerVisiblity,
+} = messageSlicer.actions;

@@ -15,13 +15,13 @@ const Messages = () => {
   const messagesContainerRef = useRef(null);
   const [autoScroll, setAutoScroll] = useState(true);
   // Fetch messages & subscribe only when selectedUser changes
-  useEffect(() => {
-    if (selectedUser) {
-      getMessages(selectedUser, disPatch);
-      subscribeToMessages(disPatch);
-    }
-    return () => unSubscribeToMessages(disPatch);
-  }, [selectedUser, messages]);
+useEffect(() => {
+  if (selectedUser) {
+    getMessages(selectedUser, disPatch);
+    subscribeToMessages(disPatch);
+  }
+  return () => unSubscribeToMessages(disPatch);
+}, [selectedUser, disPatch]);
 
   // Detect if user is at bottom
   const handleScroll = () => {
