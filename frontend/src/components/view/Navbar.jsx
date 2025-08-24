@@ -6,7 +6,7 @@ import "../style/Navbar.css";
 const Navbar = () => {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authUser.user);
-  
+
   const logoutHandler = async () => {
     logout(dispatch);
   };
@@ -15,7 +15,9 @@ const Navbar = () => {
     <div className="navbar">
       <div className="logo-section">
         <i className="bx  bx-message"></i>
-        <h1>Loop Chat</h1>
+        <Link to={"/"}>
+          <h1>Loop Chat</h1>
+        </Link>
       </div>
       <div className="user-menu">
         {authUser && (

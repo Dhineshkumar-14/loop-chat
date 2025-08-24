@@ -39,7 +39,7 @@ export const logout = async (dispatch) => {
   try {
     await axiosInstance.post("/auth/logout");
     dispatch(setUser(null));
-    disConnect(dispatch)
+    disConnect(dispatch);
     toast.success("Logged out successfully");
   } catch (error) {
     toast.error(error.response.data.message);

@@ -33,52 +33,53 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="profile">
-      <div className="container">
-        <div className="profile-container">
-          <h1>Profile</h1>
-          <div className="profile-img-container">
-            <input type="file" id="img-input" onChange={handleImageUpload} />
-            <img
-              className="profile-img"
-              src={
-                selectedImg
-                  ? selectedImg
-                  : require("./../../resoruce/avatar.png")
-              }
-            ></img>
-            <button className="profile-icon" onClick={onCameraIconHandler}>
-              <i className="bx bx-camera"></i>
-            </button>
-            <small>Click the camera icon to update your photo</small>
-          </div>
+    <div className="profile-wrapper">
+      <div className="profile-card">
+        <h2>Profile</h2>
+        <p className="subtitle">Your profile information</p>
+
+        <div className="avatar-container">
+          <img
+            src={
+              selectedImg ? selectedImg : require("../../resoruce/avatar.png")
+            }
+            alt="Profile"
+            className="avatar"
+          />
+          <label htmlFor="img-upload" className="camera-icon">
+            <i className="bx bx-camera"></i>
+          </label>
+          <input
+            type="file"
+            id="img-upload"
+            hidden
+            onChange={handleImageUpload}
+          />
         </div>
-        <div className="personal-info-container">
-          <div className="input-div">
-            <div className="label-container">
-              <i className="bx bxs-user"></i>
-              <label>Full Name</label>
-            </div>
-            <p className="input">{authUser?.fullName}</p>
-          </div>
-          <div className="input-div">
-            <div className="label-container">
-              <i className="bx bxs-envelope"></i>
-              <label>Email</label>
-            </div>
-            <p className="input">{authUser?.email}</p>
-          </div>
+        <p className="hint">Click the camera icon to update your photo</p>
+
+        <div className="form-group">
+          <label>
+            <i className="bx bxs-user"></i> Full Name
+          </label>
+          <input type="text" defaultValue={authUser.fullName} readOnly />
         </div>
-        <div className="account-info-container">
-          <h2>Account Information</h2>
-          <div className="account-info">
-            <label>Member Since</label>
-            <label>{formatDate()}</label>
-          </div>
-          <div className="account-info">
-            <label>Account Status</label>
-            <label className="active">Active</label>
-          </div>
+
+        <div className="form-group">
+          <label>
+            <i className="bx bxs-envelope"></i> Email Address
+          </label>
+          <input type="email" defaultValue={authUser.email} readOnly />
+        </div>
+
+        <h3>Account Information</h3>
+        <div className="info-row">
+          <span>Member Since</span>
+          <span>{formatDate(authUser.fullName)}</span>
+        </div>
+        <div className="info-row">
+          <span>Account Status</span>
+          <span className="active">Active</span>
         </div>
       </div>
     </div>

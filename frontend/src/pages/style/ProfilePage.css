@@ -1,165 +1,138 @@
-.profile {
+.profile-wrapper {
+  min-height: 85vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(90deg, #e2e2e2, #c9deff);
-}
-
-.container {
-  position: relative;
+  padding: 1rem;
   width: 500px;
-  height: 550px;
-  background: #fff;
-  border-radius: 30px;
-  box-shadow: 0 0 3 rgba(0, 0, 0, 0.2);
-  padding: 30px;
-  margin: 20px;
 }
 
-.profile-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.profile h1 {
-  font-size: 36px;
-}
-
-.profile-img-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-
-.profile-img {
-  width: 150px;
-  height: 150px;
-}
-
-.profile-icon {
-  background-color: #ccc;
-  outline: none;
-  border: none;
-  width: 35px;
-  height: 30px;
-  padding: 5px;
+.profile-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   text-align: center;
+}
+
+.profile-card h2 {
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  cursor: pointer;
+  object-fit: cover;
+}
+
+.camera-icon {
   position: absolute;
-  bottom: 30px;
-  right: 30%;
+  bottom: 0;
+  right: 0;
+  background: #334155;
+  color: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 35px;
+  width: 35px;
+  border: 2px solid #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-icon i {
-  font-size: 20px;
+.hint {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0.5rem 0 1.5rem;
 }
 
-.profile small {
-  font-weight: 500;
+.form-group {
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  color: #333;
+}
+
+.form-group i {
+  margin-right: 6px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #334155;
   color: #999;
+  font-size: 0.7rem;
 }
 
-#img-input{
-    display: none;
-}
-
-.personal-info-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  margin-top: 10px;
-  gap: 10px;
-}
-
-.input-div {
-  width: 100%;
-}
-.input {
-  padding: 8px 10px;
-  width: 100%;
-  border: 2px solid #777;
-  border-radius: 5px;
-  font-weight: 500;
-  color: #777;
-  font-size: 13px;
-  background-color: #eee;
-  border: none;
-  border-radius: 8px;
+.form-group input:focus {
+  border-color: #60a5fa;
   outline: none;
-  font-weight: 500;
-  font-weight: 500;
-  color: #888;
 }
 
-.label-container {
-  display: flex;
-  align-items: center;
-  margin-left: 5px;
-  gap: 5px;
+h3 {
+  margin: 1.5rem 0 1rem;
+  font-size: 1rem;
+  text-align: left;
 }
 
-.label-container i {
-  color: #333;
-  font-size: 15px;
-}
-
-label {
-  color: #333;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.account-info-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px;
-  gap: 10px;
-}
-
-.account-info-container h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-}
-
-.account-info {
+.info-row {
   display: flex;
   justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
 }
 
-.account-info label {
-  font-weight: 500;
-  font-size: 12px;
+.active {
+  color: #4ade80;
+  font-weight: bold;
 }
 
-.account-info .active {
-  color: #0ce97e;
-}
-
-@media screen and (max-width: 650px) {
-  .profile-container {
-    height: calc(100vh-40px);
+/* ✅ Responsive */
+@media (max-width: 500px) {
+  .profile-card {
+    padding: 1.5rem;
+    margin: 2.5rem;
+    box-shadow: none;
   }
-}
 
-@media screen and (max-width: 400px) {
-  .profile-container {
-    height: calc(100vh-40px);
+  .avatar {
+    width: 80px;
+    height: 80px;
   }
-  .profile small {
-    display: none;
+
+  .form-group input {
+    font-size: 0.85rem;
   }
-  .profile-icon {
-    bottom: 10px;
-    right: 10%;
+
+  .info-row {
+    font-size: 0.85rem;
   }
 }

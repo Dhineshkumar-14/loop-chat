@@ -7,7 +7,9 @@
   padding: 10px;
   background-color: #efefef;
 }
-
+a {
+  color: inherit;
+}
 .link {
   text-decoration: none;
   color: #333;

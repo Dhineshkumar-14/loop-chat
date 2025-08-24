@@ -29,11 +29,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div class="login">
+    <div className="login">
       <form>
         <h1>Login</h1>
 
-        <div class="input-box">
+        <div className="input-box">
           <input
             type="email"
             placeholder="Email"
@@ -41,10 +41,10 @@ const LoginPage = () => {
             onBlur={onBlur}
             name="email"
           />
-          <i class="fas fa-envelope"></i>
+          <i className="fas fa-envelope"></i>
         </div>
 
-        <div class="input-box">
+        <div className="input-box">
           <input
             type="password"
             placeholder="Password"
@@ -52,14 +52,14 @@ const LoginPage = () => {
             onBlur={onBlur}
             name="password"
           />
-          <i class="fas fa-lock"></i>
+          <i className="fas fa-lock"></i>
         </div>
 
-        <button type="submit" class="btn" onClick={onLogin}>
-          Sign In
+        <button type="submit" className="btn" onClick={onLogin}>
+          Login
         </button>
 
-        <p class="signup-text">
+        <p className="signup-text">
           Don’t have an account? <Link to={"/signup"}>signup</Link>
         </p>
       </form>

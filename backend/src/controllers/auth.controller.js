@@ -92,7 +92,7 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    const { profilePic } = await req.user;
+    const { profilePic } = await req.body;
     const userId = req.user._id;
     if (!profilePic) {
       return res.status(400).json({ message: "profilePic is required Field" });
